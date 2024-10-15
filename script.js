@@ -42,6 +42,20 @@ const products = [
     imgSrc: "https://rukminim1.flixcart.com/image/850/1050/xif0q/shopsy-watch/l/y/j/1-32-bk-ck-megavalue-men-original-imahyy3quh4qkekw.jpeg?q=20&crop=false",
     affiliateLink: "https://www.shopsy.in/local-watch-analogue-display-exclusive-design-analog-men/p/itma55c62655fe43?pid=XWWG9G8R86YHYTTZ&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.4b7d0c8a-2d03-4f40-8595-e8f5de017184.XWWG9G8R86YHYTTZ&_appId=CL"
   },
+  {
+    id: 7,
+    name: "Solid Man Dark Green T-shirt Price in India",
+    description: "₹264",
+    imgSrc: "https://rukminim1.flixcart.com/image/750/900/xif0q/shopsy-t-shirt/5/c/u/s-tsf65-til-shsy-teemex-original-imah4yweeq7gnrgz.jpeg?q=20&crop=false",
+    affiliateLink: "https://www.shopsy.in/solid-men-dark-green-t-shirt/p/itm9a4401312f8e5?pid=XPTH4YWERE6UUPDX&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.b7c178f6-3d1b-4309-a06f-0b97b8f7fea3.XPTH4YWERE6UUPDX&_appId=CL"
+  },
+  {
+    id: 8,
+    name: "Solid Man Black, White T-shirt",
+    description: "₹125",
+    imgSrc: "https://rukminim1.flixcart.com/image/750/700/xif0q/shopsy-t-shirt/9/e/s/xl-gsm120-fdn-original-imah4xpedyyrdjxv.jpeg?q=20&crop=false",
+    affiliateLink: "https://www.shopsy.in/solid-men-white-black-t-shirt/p/itmde4a4d68197f1?pid=XPTGYXVMWNEDDSSH&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.10c8d1d9-05b5-4ec0-a4ad-ea295f5a2cee.XPTGYXVMWNEDDSSH&_appId=CL"
+  },
 ];
 
 // Function to display all products
