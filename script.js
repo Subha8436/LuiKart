@@ -56,6 +56,20 @@ const products = [
     imgSrc: "https://rukminim1.flixcart.com/image/750/700/xif0q/shopsy-t-shirt/9/e/s/xl-gsm120-fdn-original-imah4xpedyyrdjxv.jpeg?q=20&crop=false",
     affiliateLink: "https://www.shopsy.in/solid-men-white-black-t-shirt/p/itmde4a4d68197f1?pid=XPTGYXVMWNEDDSSH&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.10c8d1d9-05b5-4ec0-a4ad-ea295f5a2cee.XPTGYXVMWNEDDSSH&_appId=CL"
   },
+  {
+    id: 9,
+    name: "Winter Unisex Cap with Neck Scarf | Stylish Winter Woolen Beanie Cap Scarf set cap",
+    description: "₹199",
+    imgSrc: "https://rukminim1.flixcart.com/image/850/850/kw6pw280/cap/x/v/6/free-1350mwc-brn-001-alomos-original-imag8xbych5kqdkf.jpeg?q=20&crop=false",
+    affiliateLink: "https://www.shopsy.in/winter-unisex-cap-neck-scarf-stylish-woolen-beanie-set/p/itm2b591df9c9b30?pid=XCAGHVYRDG4RH8NS&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.4c94f6e3-d2a0-472f-abdc-5c2fbe14b2f5.XCAGHVYRDG4RH8NS&_appId=CLhttps://www.shopsy.in/winter-unisex-cap-neck-scarf-stylish-woolen-beanie-set/p/itm2b591df9c9b30?pid=XCAGHVYRDG4RH8NS&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.4c94f6e3-d2a0-472f-abdc-5c2fbe14b2f5.XCAGHVYRDG4RH8NS&_appId=CL"
+  },
+  {
+    id: 10,
+    name: "Retro Square Sunglasses",
+    description: "₹85",
+    imgSrc: "https://rukminim1.flixcart.com/image/850/900/xif0q/shopsy-sunglass/i/w/k/free-size-boxer-manodhruva-original-imah4z87ryutzpew.jpeg?q=20&crop=false",
+    affiliateLink: "https://www.shopsy.in/retro-square-sunglasses/p/itm099fcf22ff67d?pid=SXNGK98AYJAGRDCA&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.7cfde3ff-23bc-4207-9cd6-48158b21a849.SXNGK98AYJAGRDCA&_appId=CL"
+  },
 ];
 
 // Function to display all products
