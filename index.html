@@ -66,7 +66,7 @@
 <body>
   <header class="site-header">
     <div class="container nav-container">
-      <a href="/" class="logo">DotKart</a>
+      <a href="/" class="logo">LuiKart</a>
       <span class="nav-toggle" id="navToggle">☰</span>
       <nav class="main-nav" id="mainNav">
         <a href="#products">Products</a>
@@ -253,11 +253,11 @@
       const card = document.createElement('article');
       card.className = 'product-card';
       card.innerHTML = `
-        <div class="affiliate-badge">AFFILIATE</div>
+        <div class="affiliate-badge">SELL</div>
         <img src="${p.image}" alt="${p.name}">
         <h3 class="product-title">${p.name}</h3>
         <p class="product-price">${p.price}</p>
-        <a href="${p.link}" target="_blank" class="btn btn-secondary">Buy & Earn</a>
+        <a href="${p.link}" target="_blank" class="btn btn-secondary">More</a>
       `;
       container.appendChild(card);
     });
