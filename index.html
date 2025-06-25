@@ -3,55 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuiKart</title>
-  <meta property="og:title" content="Luikart - Affordable Digital Product Marketplace for Coupons and Codes" />
-<meta property="og:description" content="Get exclusive discounts on the latest digital products and coupon codes at Luikart. Fast and secure transactions with instant access to savings!" />
-<meta property="og:image" content="https://luikart.netlify.app/images/luikart-logo.png" />
-<meta property="og:url" content="https://luikart.netlify.app" />
-<meta property="og:type" content="website" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3835438554252419"
-     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="styles.css">
+  <title>LuiKart - Premium Fashion Product Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Open Sans',sans-serif; color:#333; background:#f5f5f5; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+
+    /* Container */
+    .container { width:90%; max-width:1200px; margin:0 auto; }
+
+    /* Header */
+    .site-header { position:sticky; top:0; width:100%; backdrop-filter:blur(12px); background:rgba(255,255,255,0.95); z-index:1000; padding:0.5rem 0; }
+    .nav-container { display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-family:'Montserrat',sans-serif; font-size:1.75rem; font-weight:700; color:#1a1a1a; }
+    .nav-toggle { display:none; font-size:1.5rem; cursor:pointer; }
+    .main-nav { display:flex; gap:1.5rem; }
+    .main-nav a { font-weight:600; padding:0.5rem; transition:color .2s, background .2s; border-radius:4px; }
+    .main-nav a:hover { background:rgba(0,123,255,0.1); color:#007BFF; }
+    #searchInput { padding:0.5rem 1rem; border:1px solid #ccc; border-radius:4px; width:200px; transition:border-color .2s; }
+    .search-input:focus { outline:none; border-color:#007BFF; }
+
+    /* Hero */
+    .hero { background:linear-gradient(135deg, #007BFF 0%, #0056b3 100%); padding:6rem 0; text-align:center; color:#fff; }
+    .hero h1 { font-family:'Montserrat',sans-serif; font-size:3rem; margin-bottom:1rem; text-shadow:0 2px 8px rgba(0,0,0,0.3); }
+    .hero p { font-size:1.25rem; margin-bottom:2rem; opacity:0.9; }
+    .btn { display:inline-block; font-weight:600; padding:0.75rem 1.5rem; border-radius:50px; transition:transform .2s, box-shadow .2s; }
+    .btn-primary { background:#fff; color:#007BFF; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+
+    /* Products */
+    .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; padding:4rem 0; }
+    .product-card { background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.1); padding:1.5rem; text-align:center; transition:transform .3s,box-shadow .3s; position:relative; }
+    .product-card:hover { transform:translateY(-6px); box-shadow:0 6px 20px rgba(0,0,0,0.15); }
+    .product-card img { width:100%; height:auto; border-radius:8px; transition:transform .4s; }
+    .product-card:hover img { transform:scale(1.05); }
+    .product-title { font-size:1.2rem; margin:1rem 0 0.5rem; font-weight:600; color:#1a1a1a; }
+    .product-price { color:#28a745; font-size:1.3rem; margin-bottom:1rem; }
+    .btn-secondary { background:#007BFF; color:#fff; border-radius:50px; padding:0.5rem 1rem; }
+    .affiliate-badge { position:absolute; top:12px; left:12px; background:#ffc107; color:#1a1a1a; font-size:0.75rem; font-weight:700; padding:4px 8px; border-radius:4px; }
+
+    /* Footer call-to-action */
+    .footer-cta { background:#007BFF; color:#fff; padding:2rem 0; text-align:center; border-radius:8px; margin:4rem auto; }
+    .footer-cta p { margin-bottom:1rem; font-size:1.1rem; }
+
+    /* Responsive */
+    @media (max-width:992px) { .hero h1 { font-size:2.5rem; } .hero p { font-size:1.1rem; } .search-input { width:150px; } }
+    @media (max-width:768px) {
+      .nav-toggle { display:block; }
+      .search-input { display:none; }
+      .main-nav { position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column; gap:0; transform:translateY(-100%); transition:transform .3s ease-in-out; }
+      .main-nav.open { transform:translateY(0); }
+      .main-nav a { padding:1rem; border-bottom:1px solid #eee; }
+      .hero h1 { font-size:2rem; }
+      .products-grid { grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+    }
+  </style>
 </head>
 <body>
-  <header class="store-header">
-    <h1>LuiKart</h1>
-    <input type="text" id="searchBar" placeholder="Search Products..." class="search-bar" onkeyup="searchProducts()">
-    <h3>5,500 monthly users</h3>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="/" class="logo">DotKart</a>
+      <span class="nav-toggle" id="navToggle">☰</span>
+      <nav class="main-nav" id="mainNav">
+        <a href="#products">Products</a>
+      </nav>
+      <input type="text" id="searchInput" placeholder="Search products, brands...">
+    </div>
   </header>
-  
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3835438554252419"
-     crossorigin="anonymous"></script>
-<!-- ad no1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3835438554252419"
-     data-ad-slot="7611537022"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  
-  <main class="store-container" id="productContainer">
-    <!-- Products will be added here dynamically -->
-  </main>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3835438554252419"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-3835438554252419"
-     data-ad-slot="2403227088"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  <section class="hero">
+    <div class="container">
+      <h1>Top Deals Await</h1>
+      <p>Handpicked products to give you the best quality</p>
+      <a href="#products" class="btn btn-primary">Shop Now</a>
+    </div>
+  </section>
 
-  <footer class="store-footer">
-    <p>&copy; 2024 LuiKart. All rights reserved.</p>
-  </footer>
+  <section id="products" class="products-grid container">
+    <!-- Product cards will be injected here -->
+  </section>
 
-  <script src="script.js"></script>
+  <section class="footer-cta container">
+    <p>Don’t miss out on our exclusive offers!</p>
+    <a href="#products" class="btn btn-primary">Explore Now</a>
+  </section>
+
+  <script>
+    // JavaScript array of products
+    const products = [
+      {
+        name: "Color Block Men White T-shirt",
+        image: "https://rukminim3.flixcart.com/image/840/972/xif0q/shopsy-t-shirt/f/6/a/m-rm-polo-004-aksa-original-imaharatysrgqr2g.jpeg?q=60&crop=false",
+        price: "₹299",
+        link: "https://www.shopsy.in/color-block-men-white-t-shirt/p/itm94e06f41731e7?pid=XPTHARATJQ72KAUE&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&marketplace=FLIPKART&cmpid=product.share.pp&_refId=PP.aef98505-1eba-465e-bc13-5efbc9a0f706.XPTHARATJQ72KAUE&_appId=CL",
+    },
+    {
+        name: "Printed Men Black T-shirt",
+        image: "https://rukminim3.flixcart.com/image/840/972/xif0q/shopsy-t-shirt/0/c/w/xl-most-as-h-money-inby-original-imah4zp7gynhwxut.jpeg?q=60&crop=false",
+        price: "₹179",
+        link: "https://www.shopsy.in/printed-men-black-t-shirt/p/itm91e4888f31e62?pid=XPTH5YMGGVWHXHZD&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&marketplace=FLIPKART&cmpid=product.share.pp&_refId=PP.7d723818-a4df-48fd-ae60-8ef483e1a468.XPTH5YMGGVWHXHZD&_appId=CL",
+    },
+    {
+        name: "Self Design Men Brown T-shirt",
+        image: "https://rukminim3.flixcart.com/image/840/972/xif0q/t-shirt/l/f/a/xl-polo-8016-brown-o6-burrmellow-original-imahd96jhcwa7ebu.jpeg?q=60&crop=false",
+        price: "₹245",
+        link: "https://www.shopsy.in/self-design-men-brown-t-shirt/p/itmd07b7baed8f09?pid=XPTHD96HCK5SGNHU&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&marketplace=FLIPKART&cmpid=product.share.pp&_refId=PP.32727d95-5ea0-4c78-9a85-52c4397034a5.XPTHD96HCK5SGNHU&_appId=CL",
+    },
+    {
+        name: "Printed Men Orange T-shirt",
+        image: "https://rukminim3.flixcart.com/image/840/972/xif0q/t-shirt/0/o/a/l-rise-agn-peach-waven-original-imahbw9gvvde3ckg.jpeg?q=60&crop=false",
+        price: "₹195",
+        link: "https://www.shopsy.in/printed-men-orange-t-shirt/p/itmf45485b3a669c?pid=XPTHBW9VSGXHQZEP&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&marketplace=FLIPKART&cmpid=product.share.pp&_refId=PP.4ebe5f3e-5fe6-447d-b2b6-8369f132f83c.XPTHBW9VSGXHQZEP&_appId=CL",
+    },
+    {
+        name: "Men Orange, Grey Clogs",
+        image: "https://rukminim3.flixcart.com/image/840/972/xif0q/shopsy-sandal/i/e/9/6-s-org-grey-winner-6-hambler-grey-original-imagzx9yecgcwzat.jpeg?q=60&crop=false",
+        price: "₹279",
+        link: "https://www.shopsy.in/men-orange-grey-clogs/p/itm9718d52af37a4?pid=XSNGZX9YTVRSDF6U&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&marketplace=FLIPKART&cmpid=product.share.pp&_refId=PP.e30eb074-fff6-40f9-90dd-573e67badf15.XSNGZX9YTVRSDF6U&_appId=CL",
+    },
+    {
+        name: "Men White Sandals",
+        image: "https://rukminim3.flixcart.com/image/840/972/xif0q/sandal/q/n/1/9-brd-1237-9-birde-white-original-imah32kfxqwfkmyg.jpeg?q=60&crop=false",
+        price: "₹259",
+        link: "https://www.shopsy.in/men-white-sandals/p/itm2dd1f72bf05e8?pid=XSNH4H93S7X2DJWH&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&marketplace=FLIPKART&cmpid=product.share.pp&_refId=PP.7f5dcb6a-4116-40c6-bb50-f5a0f3232034.XSNH4H93S7X2DJWH&_appId=CL",
+    },
+    {
+        name: "Men & Women Solid Low Cut (Pack of 3)",
+        image: "https://rukminim2.flixcart.com/image/1200/1385/xif0q/sock/o/r/c/free-3-loafer-plain-303-fabdon-original-imah2yhnfvm7uzry.jpeg?q=60&crop=false",
+        price: "₹100",
+        link: "https://www.shopsy.in/fabdon-men-women-solid-low-cut/p/itm7b3611cf624f7?pid=SOCFES3DZSR8BMSR&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.aa3874a7-4826-4e1d-b8b3-d10c76a71810.SOCFES3DZSR8BMSR&_appId=CL",
+    },
+    {
+        name: "Self Design Men Black, Grey Track Pants",
+        image: "https://rukminim2.flixcart.com/image/1200/1385/xif0q/shopsy-track-pant/8/5/d/32-sports-logo-lower-leemak-original-imah44fzcftqzz7n.jpeg?q=60&crop=false",
+        price: "₹149",
+        link: "https://www.shopsy.in/self-design-men-black-grey-track-pants/p/itmb17ee4c27b9ce?pid=XTPH3XVRDAZKHZHV&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.b568d0c8-1504-4a38-a9da-e4df412dae4d.XTPH3XVRDAZKHZHV&_appId=CL",
+    },
+    {
+        name: "Self Design Paithani Art Silk Saree (White)",
+        image: "https://rukminim2.flixcart.com/image/1200/1385/xif0q/sari/w/i/p/free-self17d10new-desirable-south-indian-bengali-creative-luxury-original-imahfgvkpadqhcgt.jpeg?q=60&crop=false",
+        price: "₹ 249",
+        link: "https://www.shopsy.in/self-design-paithani-art-silk-saree/p/itmd209c23162689?pid=XPSG9GGNNK2XA3G9&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.77eaf4fe-a3ad-4275-96ca-1741e7e890f7.XPSG9GGNNK2XA3G9&_appId=CL",
+    },
+    {
+        name: "Woven Banarasi Art Silk Saree (Magenta)",
+        image: "https://rukminim2.flixcart.com/image/1200/1385/xif0q/sari/t/y/u/free-kp-56-starliner-unstitched-original-imaghz57hdqxcq68.jpeg?q=60&crop=false",
+        price: "₹429",
+        link: "https://www.shopsy.in/woven-banarasi-art-silk-saree/p/itmd3f0e9be73d55?pid=XPSGNKVH7TUZXFBK&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.90955527-e69f-4dac-8e8f-655e04c81dd8.XPSGNKVH7TUZXFBK&_appId=CL",
+    },
+    {
+        name: "Color Block Men Multicolor, Black, White",
+        image: "https://rukminim1.flixcart.com/image/850/1050/xif0q/shopsy-t-shirt/x/c/e/l-round-neck-farrowx-original-imagpycsz539myzs.jpeg?q=20&crop=false",
+        price: "₹175",
+        link: "https://www.shopsy.in/color-block-men-multicolor-black-white-t-shirt/p/itm24a036cb5eaa9?pid=XPTGPYCSEFYY7EW9&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.b9925eb7-e8b5-46c1-9100-7e0bd55e0b68.XPTGPYCSEFYY7EW9&_appId=CL",
+    },
+    {
+        name: "Self Design Men Black Track Pants",
+        image: "https://rukminim1.flixcart.com/image/850/1050/xif0q/shopsy-track-pant/x/f/e/xxl-spy-l15-cut-rusksun-original-imah2vuw4byyhnzs.jpeg?q=20&crop=false",
+        price: "₹159",
+        link: "https://www.shopsy.in/self-design-men-black-track-pants/p/itm6701125575175?pid=XTPGXYBRW4SGFTJY&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.fd0d35ba-656a-48eb-a094-1ad9b8e96250.XTPGXYBRW4SGFTJY&_appId=CL",
+    },
+    {
+        name: "Men Checkered Formal Grey Shirt",
+        image: "https://rukminim1.flixcart.com/image/850/1050/xif0q/shopsy-shirt/8/h/g/xxl-s-check-grey-rodeiz-original-imah3etwyqfpzrts.jpeg?q=20&crop=false",
+        price: "₹269",
+        link: "https://www.shopsy.in/men-checkered-formal-grey-shirt/p/itm063bd772e8e16?pid=XSRGYR8DZSRTDZFZ&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.196400c6-29e1-4d95-b526-e2124fdcfd2d.XSRGYR8DZSRTDZFZ&_appId=CL",
+    },
+    {
+        name: "Avio Lather buy 1 get 1 FREE Analog Watch  - For Men",
+        image: "https://rukminim1.flixcart.com/image/850/850/xif0q/shopsy-watch/c/q/c/2-buy-1-get-1-free-daniel-radcliffe-men-original-imagzgk7ssvpfafu.jpeg?q=20&crop=false",
+        price: "₹219",
+        link: "https://www.shopsy.in/avio-lather-buy-1-get-free-analog-watch-men/p/itm421fe24306bed?pid=XWWGZGK7AJBSZ9E3&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.043bf58e-185b-49ea-87f3-f420411c921d.XWWGZGK7AJBSZ9E3&_appId=CL",
+    },
+    {
+        name: "NIKE Mercurial Vapor 16 Club MG Football Shoes For Me",
+        image: "https://rukminim1.flixcart.com/image/750/900/xif0q/shoe/8/c/q/6-fq8441-400-6-nike-glacier-blue-blue-orbit-original-imah2zdyz4csv8g6.jpeg?q=20&crop=false",
+        price: "₹4990",
+        link: "https://www.shopsy.in/nike-mercurial-vapor-16-club-mg-football-shoes-men/p/itmb72461b679b10?pid=SHOH2ZDYCJAZFTGH&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.4a186dc1-c753-4ccb-a829-40fc519aa79c.SHOH2ZDYCJAZFTGH&_appId=CL",
+    },
+    {
+        name: "Stylish Comfortable Premium Sports Shoe for men Running Shoes",
+        image: "https://rukminim1.flixcart.com/image/750/500/xif0q/shoe/r/i/v/8-stylish-comfortable-lightweight-running-shoes-walking-shoes-original-imagk6rpcq98hzny.jpeg?q=20&crop=false",
+        price: "₹290",
+        link: "https://www.shopsy.in/stylish-comfortable-premium-sports-shoes-men-running-casuals/p/itmf2cd147bcc9e3?pid=EOEGXW34QGE5FK9R&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.69560946-3355-4b0a-9768-44f812f78491.EOEGXW34QGE5FK9R&_appId=WA",
+    },
+    {
+        name: "Wireless Gaming Sports Headphones Stereo With SD Card & 5-6h Battery Backup",
+        image: "https://rukminim1.flixcart.com/image/750/750/xif0q/headphone/6/y/s/wireless-gaming-sports-headphones-stereo-with-sd-card-5-6h-original-imah2d78vufdgmtq.jpeg?q=20&crop=false",
+        price: "₹299",
+        link: "https://www.shopsy.in/wireless-gaming-sports-headphones-stereo-sd-card-5-6h-battery-backupwe353-bluetooth-headset/p/itm0570f5a5f8a24?pid=XHOH2D8FMM7UGDX2&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.8c49aef3-cb60-4724-897a-c11cac49d9f8.XHOH2D8FMM7UGDX2&_appId=CL",
+    },
+    {
+        name: "Ultrapods 20 Wireless Earbuds Comes with transperant case Digital Display Bluetooth Headset",
+        image: "https://rukminim1.flixcart.com/image/750/900/xif0q/shopsy-headphone/8/f/6/bluetooth-yes-ultrapods-20-wireless-earbuds-comes-with-original-imah4ggkt2hpbbtn.jpeg?q=20&crop=false",
+        price: "₹299",
+        link: "https://www.shopsy.in/ultrapods-20-wireless-earbuds-comes-transperant-case-digital-display-bluetooth-headset/p/itmabddbfa20d8ac?pid=XHOH2ATFG5TQVAQW&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.abd1a4f4-1aa5-4d85-871e-2cb8a23ba007.XHOH2ATFG5TQVAQW&_appId=CL",
+    },
+    {
+        name: "Black Day and Date Analog Watch",
+        image: "https://rukminim1.flixcart.com/image/850/1050/xif0q/watch/x/v/p/1-eh-226-bk-eddy-hager-men-original-imahfqyqhgbtwmwu.jpeg?q=20&crop=false",
+        price: "₹278",
+        link: "https://www.shopsy.in/black-day-date-analog-watch-men/p/itme0a11754184c4?pid=XWWG9G9RRPHHYJS9&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.b6f0d275-a6a7-4318-b330-9a9784d8ee35.XWWG9G9RRPHHYJS9&_appId=CL",
+    },
+    {
+        name: "CheckBlueRay0507 Day And Date Functioning Mens and Boys Solitary Blue Dial Unique Pattern New Latest Trendy Stylish Analog Watch",
+        image: "https://rukminim1.flixcart.com/image/850/1050/kcxpbww0/watch/e/w/j/checkblueray0507-espoir-original-imafty4ujpfwj3dv.jpeg?q=20&crop=false",
+        price: "₹311",
+        link: "https://www.shopsy.in/checkblueray0507-day-date-functioning-mens-boys-solitary-blue-dial-unique-pattern-new-latest-trendy-stylish-analog-watch-men/p/itm8e4e528ea66a5?pid=XWWG8TM7HHUSQYBG&affid=inf_58a05c12-d91e-4903-a5e5-fb790385d6e6&cmpid=product.share.pp&_refId=PP.80b73f15-af30-49fa-98da-85b7a379a224.XWWG8TM7HHUSQYBG&_appId=CL",
+    },
+    {
+        name: "SKMEI Men's Digital Sports Watch",
+        image: "https://m.media-amazon.com/images/I/61A8Y+BMLXL._SX679_.jpg",
+        price: "₹499",
+        link: "https://amzn.to/46epbWk",
+    },
+    {
+        name: "TIMEWEAR Analog Day Date Functioning Stainless Steel Chain Watch for Men",
+        image: "https://m.media-amazon.com/images/I/81nj6IlZpVL._SY879_.jpg",
+        price: "₹299",
+        link: "https://amzn.to/4fa7mMf",
+    },
+    {
+        name: "Noise Twist Round dial Smart Watch",
+        image: "https://m.media-amazon.com/images/I/41wp3NoyIXL._SX300_SY300_QL70_FMwebp_.jpg",
+        price: "₹1299",
+        link: "https://amzn.to/3Wvvp0O",
+    },
+    {
+        name: "Noise Force Rugged & Sporty 1.32 Bluetooth Calling Smart Watch",
+        image: "https://m.media-amazon.com/images/I/614pTKzcPiL._SX679_.jpg",
+        price: "₹1499",
+        link: "https://amzn.to/4dvEX1F",
+    },
+    ];
+
+
+  // Single reference to container & search input
+  const container   = document.getElementById('products');
+  const searchInput = document.getElementById('searchInput');
+
+  // Render function (used everywhere)
+  function renderList(list) {
+    container.innerHTML = '';
+    list.forEach(p => {
+      const card = document.createElement('article');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <div class="affiliate-badge">AFFILIATE</div>
+        <img src="${p.image}" alt="${p.name}">
+        <h3 class="product-title">${p.name}</h3>
+        <p class="product-price">${p.price}</p>
+        <a href="${p.link}" target="_blank" class="btn btn-secondary">Buy & Earn</a>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // Initial draw
+  renderList(products);
+
+  // Live filtering
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    renderList(products.filter(p => p.name.toLowerCase().includes(q)));
+  });
+
+  // Mobile nav toggle
+  document.getElementById('navToggle')
+    .addEventListener('click', () => document.getElementById('mainNav').classList.toggle('open'));
+
+
+  </script>
 </body>
 </html>
