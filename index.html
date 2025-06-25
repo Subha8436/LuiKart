@@ -50,17 +50,41 @@
     .footer-cta { background:#007BFF; color:#fff; padding:2rem 0; text-align:center; border-radius:8px; margin:4rem auto; }
     .footer-cta p { margin-bottom:1rem; font-size:1.1rem; }
 
-    /* Responsive */
-    @media (max-width:992px) { .hero h1 { font-size:2.5rem; } .hero p { font-size:1.1rem; } .search-input { width:150px; } }
-    @media (max-width:768px) {
-      .nav-toggle { display:block; }
-      .search-input { display:none; }
-      .main-nav { position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column; gap:0; transform:translateY(-100%); transition:transform .3s ease-in-out; }
-      .main-nav.open { transform:translateY(0); }
-      .main-nav a { padding:1rem; border-bottom:1px solid #eee; }
-      .hero h1 { font-size:2rem; }
-      .products-grid { grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
-    }
+    /* ===== Responsive Helpers ===== */
+
+/* Tablet down: adjust hero font-sizes and shrink search box */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  .search-input {
+    width: 150px;
+  }
+}
+
+/* Mobile down: tweak product layout */
+@media (max-width: 768px) {
+  /* Ensure product titles are visible and wrap properly */
+  .product-card .product-title {
+    display: block !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    height: auto !important;
+    font-size: 1rem;
+    margin: 0.5em 0;
+  }
+
+  /* Make the grid one-column for mobile scrolling */
+  #products {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -69,7 +93,7 @@
       <a href="/" class="logo">LuiKart</a>
       <span class="nav-toggle" id="navToggle">☰</span>
       <nav class="main-nav" id="mainNav">
-        <a href="#products">Products</a>
+        
       </nav>
       <input type="text" id="searchInput" placeholder="Search products, brands...">
     </div>
